@@ -1,0 +1,21 @@
+@use 'index' as *;
+.services-section {
+  padding: $padding-section;
+  text-align: center;
+
+  .services {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+
+    .card {
+      flex: 1;
+    }
+  }
+
+  @include respond(mobile) {
+    .services {
+      flex-direction: column;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+@use 'index' as *;
+
+.site-footer {
+  background-color: $primary-color;
+  color: white;
+  padding: 1rem 0;
+  text-align: center;
+
+  .socials {
+    margin-top: 0.5rem;
+
+    a {
+      margin: 0 0.5rem;
+      color: white;
+    }
+  }
+}

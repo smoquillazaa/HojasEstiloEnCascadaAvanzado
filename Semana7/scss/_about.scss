@@ -1,0 +1,25 @@
+@use 'index' as *;
+
+.about-section {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  padding: $padding-section;
+
+  .text {
+    flex: 1;
+  }
+
+  .image {
+    flex: 1;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  @include respond(mobile) {
+    flex-direction: column;
+  }
+}

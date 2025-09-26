@@ -1,0 +1,34 @@
+@use 'index' as *;
+.site-header {
+  background-color: $primary-color;
+  color: white;
+  padding: 1rem 0;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+
+    li a {
+      color: white;
+      font-weight: bold;
+    }
+  }
+
+  @include respond(mobile) {
+    .nav ul {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+}
