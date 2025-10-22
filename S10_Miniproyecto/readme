@@ -1,0 +1,38 @@
+Justificación Técnica de Compatibilidad
+
+Este proyecto fue desarrollado para garantizar una experiencia de usuario consistente y funcional en los navegadores más utilizados, incluidos Google Chrome, Mozilla Firefox, Microsoft Edge, Safari y Internet Explorer 11. A continuación, se detallan las técnicas utilizadas para asegurar la compatibilidad entre navegadores:
+
+1. Uso de Propiedades CSS Modernas con Fallbacks
+
+Se utilizaron propiedades modernas de CSS como Flexbox y Grid para crear un diseño flexible y eficiente. Sin embargo, para garantizar que el sitio funcione en navegadores más antiguos, se incluyeron fallbacks:
+
+Si un navegador no soporta CSS Grid, se recurre a Flexbox como solución alternativa.
+
+Se evitó el uso de propiedades que no tienen compatibilidad en versiones anteriores de Internet Explorer, como box-shadow y border-radius, que no se muestran correctamente sin un soporte adecuado.
+
+2. Prefijos de Proveedor (-webkit-, -moz-, etc.)
+
+Para asegurar la compatibilidad en versiones anteriores de navegadores como Safari y Firefox, se aplicaron prefijos de proveedor en propiedades que requerían estos prefijos para su correcto funcionamiento.
+
+Transiciones y transformaciones CSS fueron adaptadas con prefijos como -webkit- y -moz-.
+
+Se utilizó el prefijo -ms- para Flexbox en versiones más antiguas de Internet Explorer y Edge Legacy.
+
+3. Uso de @supports para la Detección de Características
+
+El bloque @supports fue empleado para verificar si un navegador es compatible con ciertas propiedades CSS modernas, como CSS Grid. Si no se soporta, se aplican estilos alternativos para asegurar que el diseño siga siendo funcional.
+
+4. Compatibilidad con los Navegadores Más Usados
+
+El diseño fue probado y optimizado para los siguientes navegadores:
+
+Google Chrome (últimas versiones)
+
+Mozilla Firefox (últimas versiones)
+
+Microsoft Edge 
+
+5. Diseño Responsivo y Mobile-First
+
+El diseño fue implementado con un enfoque Mobile-First, asegurando que la experiencia del usuario sea óptima en dispositivos móviles y luego escalando a pantallas más grandes. Se utilizaron media queries y unidades relativas como em, rem, y % para adaptar el diseño a diferentes tamaños de pantalla.
+
