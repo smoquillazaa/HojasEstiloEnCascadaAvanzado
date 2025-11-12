@@ -1,0 +1,59 @@
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+}
+
+.bg-custom {
+  background-color: #004d40 !important;
+}
+
+.text-custom {
+  color: #004d40 !important;
+}
+
+.btn-custom {
+  background-color: #004d40;
+  color: #fff;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: #00695c;
+  transform: translateY(-2px);
+}
+
+.hero {
+  min-height: 60vh;
+  background: linear-gradient(135deg, #004d40, #00796b);
+}
+
+.card {
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.img {
+  width: 400px;
+  height: 250px;
+  object-fit: contain; 
+}
+
+footer {
+  font-size: 0.9rem;
+}
+
+.form-control:focus {
+  border-color: #004d40;
+  box-shadow: 0 0 0 0.2rem rgba(0, 77, 64, 0.25);
+}
