@@ -1,0 +1,58 @@
+/* Fuente global */
+body {
+    font-family: "Segoe UI", sans-serif;
+}
+
+/* Scroll suave en toda la página */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Clases personalizadas */
+.bg-custom {
+    background-color: #004d40;
+}
+
+.text-custom {
+    color: #004d40;
+}
+
+.btn-custom {
+    background-color: #004d40;
+    color: #fff;
+    transition: 0.3s ease;
+}
+
+.btn-custom:hover {
+    background-color: #00695c;
+}
+
+/* Hover personalizados de navbar y links */
+nav a {
+    transition: 0.3s ease;
+}
+
+nav a:hover {
+    opacity: 0.8;
+}
+
+/* Sombras personalizadas adicionales */
+.card-custom-shadow {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Footer personalizado */
+footer {
+    background-color: #004d40;
+    color: #fff;
+}
+
+/* Cards de clientes - animación suave */
+.client-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.client-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
