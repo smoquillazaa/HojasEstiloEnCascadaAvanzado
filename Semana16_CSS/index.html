@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IdeaBox</title>
+
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <!-- TOP APP BAR -->
+    <nav class="blue">
+        <div class="nav-wrapper container">
+            <a href="#!" class="brand-logo">IdeaBox</a>
+        </div>
+    </nav>
+
+    <div class="container section">
+
+        <div class="row">
+
+            <!-- FORMULARIO -->
+            <div class="col s12 m6">
+                <div class="card">
+                    <div class="card-content">
+
+                        <span class="card-title">Registrar Idea</span>
+
+                        <form id="form-idea">
+
+                            <div class="input-field">
+                                <input id="nombre" type="text">
+                                <label for="nombre">Nombre</label>
+                            </div>
+
+                            <div class="input-field">
+                                <textarea id="idea" class="materialize-textarea"></textarea>
+                                <label for="idea">Idea</label>
+                            </div>
+
+                            <button class="btn blue waves-effect waves-light" type="submit">
+                                Enviar
+                                <i class="material-icons right">send</i>
+                            </button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IDEAS RECIENTES -->
+            <div class="col s12 m6">
+                <h5>Ideas Recientes</h5>
+
+                <div class="card">
+                    <div class="card-content" id="ideas-recientes">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- TODAS LAS IDEAS -->
+        <h5 class="section">Todas las Ideas</h5>
+
+        <div class="row" id="todas-ideas">
+            <!-- Las ideas se agregarán dinámicamente aquí -->
+        </div>
+    </div>
+
+    <!-- FAB (Floating Action Button) -->
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large red">
+            <i class="large material-icons">add</i>
+        </a>
+    </div>
+
+    <!-- Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- SCRIPT FUNCIONAL -->
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+
+        M.FloatingActionButton.init(document.querySelector(".fixed-action-btn"));
+
+        const form = document.getElementById("form-idea");
+        const nombreInput = document.getElementById("nombre");
+        const ideaInput = document.getElementById("idea");
+
+        const recientesContainer = document.getElementById("ideas-recientes");
+        const todasIdeasContainer = document.getElementById("todas-ideas");
+
+        let ultimaIdea = null;  
+        let idsAgregados = new Set(); // Para evitar duplicados
+        let editingIdeaId = null; // Para saber qué idea estamos editando
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const nombre = nombreInput.value.trim();
+            const idea = ideaInput.value.trim();
+
+            if (!nombre || !idea) {
+                M.toast({ html: "Por favor llena todos los campos" });
+                return;
+            }
+
+            // Crear ID único para esta idea
+            const id = Date.now().toString();
+
+            // Si estamos editando una idea, actualizarla
+            if (editingIdeaId) {
+                // Actualizar la idea en ambas secciones
+                actualizarIdea(editingIdeaId, nombre, idea);
+                editingIdeaId = null; // Resetear después de editar
+            } else {
+                // SI HAY UNA IDEA RECIENTE ANTERIOR → pásala a Todas
+                if (ultimaIdea && !idsAgregados.has(ultimaIdea.id)) {
+                    agregarATodas(ultimaIdea.nombre, ultimaIdea.idea, ultimaIdea.id);
+                    idsAgregados.add(ultimaIdea.id);
+                }
+
+                // AGREGAR NUEVA A RECIENTES
+                agregarARecientes(nombre, idea, id);
+
+                // AGREGAR NUEVA A TODAS LAS IDEAS (sin duplicar)
+                agregarATodas(nombre, idea, id);
+                idsAgregados.add(id);
+
+                // GUARDAR COMO LA NUEVA ULTIMA IDEA
+                ultimaIdea = { id, nombre, idea };
+            }
+
+            form.reset();
+            M.updateTextFields();
+        });
+
+        function agregarARecientes(nombre, idea, id) {
+            const div = document.createElement("div");
+            div.classList.add("idea-item");
+            div.innerHTML = `<strong>${nombre}:</strong> ${idea}`;
+            div.setAttribute("data-id", id);
+            recientesContainer.prepend(div);
+        }
+
+        function agregarATodas(nombre, idea, id) {
+            const col = document.createElement("div");
+            col.classList.add("col", "s12", "m6", "l4");
+
+            col.innerHTML = `
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">${nombre}</span>
+                        <p>${idea}</p>
+                        <button class="btn-small red delete-btn"><i class="material-icons">delete</i></button>
+                        <button class="btn-small yellow edit-btn"><i class="material-icons">edit</i></button>
+                    </div>
+                </div>
+            `;
+            col.setAttribute("data-id", id);
+
+            todasIdeasContainer.appendChild(col);
+
+            // Añadir funcionalidad de eliminar y editar
+            agregarEventosBotones(col);
+        }
+
+        function agregarEventosBotones(elemento) {
+            const deleteBtn = elemento.querySelector(".delete-btn");
+            const editBtn = elemento.querySelector(".edit-btn");
+
+            // Borrar idea
+            deleteBtn.addEventListener("click", () => {
+                const id = elemento.getAttribute("data-id");
+
+                // Eliminar de Recientes
+                const recientesItems = document.querySelectorAll("#ideas-recientes .idea-item");
+                recientesItems.forEach(item => {
+                    if (item.getAttribute("data-id") === id) {
+                        item.remove();
+                    }
+                });
+
+                // Eliminar de Todas las Ideas
+                const todasItems = document.querySelectorAll("#todas-ideas .col");
+                todasItems.forEach(item => {
+                    if (item.getAttribute("data-id") === id) {
+                        item.remove();
+                    }
+                });
+
+                idsAgregados.delete(id);
+            });
+
+            // Editar idea
+            editBtn.addEventListener("click", () => {
+                const id = elemento.getAttribute("data-id");
+                const nombre = elemento.querySelector("span").textContent.trim();
+                const idea = elemento.querySelector("p").textContent.trim();
+
+                // Cargar la idea en el formulario para editar
+                nombreInput.value = nombre;
+                ideaInput.value = idea;
+
+                // Guardamos el ID de la idea que estamos editando
+                editingIdeaId = id;
+                M.updateTextFields(); // Actualizamos los campos
+            });
+        }
+
+        function actualizarIdea(id, nuevoNombre, nuevaIdea) {
+            // Actualizar en Recientes
+            const recientesItems = document.querySelectorAll("#ideas-recientes .idea-item");
+            recientesItems.forEach(item => {
+                if (item.getAttribute("data-id") === id) {
+                    item.innerHTML = `<strong>${nuevoNombre}:</strong> ${nuevaIdea}`;
+                }
+            });
+
+            // Actualizar en Todas las Ideas
+            const todasItems = document.querySelectorAll("#todas-ideas .col");
+            todasItems.forEach(item => {
+                if (item.getAttribute("data-id") === id) {
+                    item.querySelector("span").textContent = nuevoNombre;
+                    item.querySelector("p").textContent = nuevaIdea;
+                }
+            });
+        }
+
+    });
+    </script>
+
+</body>
+</html>
