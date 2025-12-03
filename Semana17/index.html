@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EcoFuture - Tecnología Sostenible</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Roboto&display=swap" rel="stylesheet">
+
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+
+    <!-- Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="nav-fixed">
+        <div class="nav-wrapper container">
+            <a href="#" class="brand-logo">EcoFuture</a>
+            <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                <i class="material-icons">menu</i>
+            </a>
+
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- NAVBAR MOVIL -->
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+    </ul>
+
+    <!-- HERO / INICIO -->
+    <header id="inicio" class="hero-section">
+        <div class="container center-align hero-content">
+            <h2 class="white-text" style="font-family: Montserrat; font-size: 36px; margin-bottom: 10px;">
+                Innovando para un Futuro Sostenible
+            </h2>
+            <p class="white-text flow-text">
+                Impulsamos soluciones tecnológicas eco-amigables para transformar el Perú.
+            </p>
+
+            <a href="#contacto" class="btn-large waves-effect waves-light" style="background:#43A047; margin-top:20px;">
+                Únete a la comunidad
+            </a>
+        </div>
+    </header>
+
+    <!-- SECCIÓN NOSOTROS -->
+    <section id="nosotros" class="section container">
+        <div class="row">
+            <div class="col s12 m6">
+                <img src="https://img.freepik.com/foto-gratis/amigos-latinos-talla-media-pasando-rato_23-2151139437.jpg?semt=ais_hybrid&w=740&q=80" 
+                     class="responsive-img z-depth-3" 
+                     style="border-radius:12px;">
+            </div>
+
+            <div class="col s12 m6">
+                <h4 class="title-green" style="font-family: Montserrat;">Nuestra Misión</h4>
+                <p>
+                    En <strong>EcoFuture</strong> creemos que la tecnología puede y debe ser un motor
+                    para el cambio ambiental. Trabajamos con jóvenes entre 18 y 30 años para impulsar
+                    soluciones innovadoras que protejan nuestro planeta.
+                </p>
+
+                <ul class="collection z-depth-1">
+                    <li class="collection-item"><i class="material-icons">eco</i> Tecnologías sostenibles</li>
+                    <li class="collection-item"><i class="material-icons">flash_on</i> Innovación constante</li>
+                    <li class="collection-item"><i class="material-icons">people</i> Comunidad activa</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CARD DESTACADA -->
+    <section class="container">
+        <div class="card z-depth-3">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085" alt="Tecnología Sostenible" />
+                <span class="card-title eco-card-title">
+                    Transformamos ideas en impacto ambiental real
+                </span>
+            </div>
+            <div class="card-content">
+                <p>
+                    Nuestra startup desarrolla proyectos tecnológicos orientados a energías limpias, 
+                    optimización de recursos y educación ambiental. Queremos crear oportunidades para 
+                    que los jóvenes lideren el cambio.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULARIO DE SUSCRIPCIÓN -->
+    <section id="contacto" class="section container">
+        <h4 class="center-align title-green" style="font-family: Montserrat;">Únete a nuestra comunidad</h4>
+        <p class="center-align" style="margin-bottom:30px;">
+            Recibe noticias, eventos y oportunidades relacionadas con tecnología sostenible.
+        </p>
+
+        <div class="row">
+            <form id="formEco" class="col s12 card-panel z-depth-2" style="border-radius:12px;">
+                <div class="row">
+                    <div class="input-field col s12 m6">
+                        <input id="nombre" type="text" required />
+                        <label for="nombre">Nombre</label>
+                    </div>
+
+                    <div class="input-field col s12 m6">
+                        <input id="correo" type="email" required />
+                        <label for="correo">Correo electrónico</label>
+                    </div>
+                </div>
+
+                <div class="center-align">
+                    <button class="btn-floating btn-large waves-effect floating-btn modal-trigger" 
+                            href="#modalThanks">
+                        <i class="material-icons">send</i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- MODAL -->
+    <div id="modalThanks" class="modal">
+        <div class="modal-content">
+            <h4>¡Gracias por unirte!</h4>
+            <p>Muy pronto recibirás noticias sostenibles directamente en tu correo.</p>
+        </div>
+
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">
+                Cerrar
+            </a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer-green card-footer">
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col s12 m4 footer-card">
+                <i class="material-icons">eco</i>
+                <h6>Compromiso Ambiental</h6>
+                <p>Creemos en soluciones tecnológicas limpias y sostenibles.</p>
+            </div>
+
+            <div class="col s12 m4 footer-card">
+                <i class="material-icons">lightbulb_outline</i>
+                <h6>Innovación</h6>
+                <p>Proyectos creados por jóvenes para transformar el futuro.</p>
+            </div>
+
+            <div class="col s12 m4 footer-card">
+                <i class="material-icons">group</i>
+                <h6>Comunidad</h6>
+                <p>Únete a nuestro movimiento verde y participa activamente.</p>
+            </div>
+
+        </div>
+
+        <div class="center-align" style="margin-top: 20px;">
+            <strong>© 2025 EcoFuture — Todos los derechos reservados</strong>
+        </div>
+
+    </div>
+</footer>
+
+
+
+    <!-- SCRIPTS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            M.Sidenav.init(document.querySelectorAll('.sidenav'));
+            M.Modal.init(document.querySelectorAll('.modal'));
+        });
+    </script>
+</body>
+</html>

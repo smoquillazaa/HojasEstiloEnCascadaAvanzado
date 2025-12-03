@@ -1,0 +1,167 @@
+/* ================================
+   CONFIGURACIÓN GENERAL
+=================================*/
+body {
+    background-color: #F5F5F5;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, .brand-logo {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Color institucional */
+.title-green {
+    color: #43A047;
+}
+
+.footer-green {
+    background-color: #43A047 !important;
+}
+
+/* ================================
+   NAVBAR
+=================================*/
+nav {
+    background-color: #43A047;
+}
+
+.brand-logo {
+    letter-spacing: 1px;
+}
+
+/* ================================
+   HERO SECTION
+=================================*/
+.hero-section {
+    background: 
+        linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
+        url("https://images.unsplash.com/photo-1504384308090-c894fdcc538d");
+    background-size: cover;
+    background-position: center;
+    padding: 120px 20px;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    max-width: 700px;
+    animation: fadeInUp 1.2s ease;
+}
+
+/* Animación Hero */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================================
+   SECCIÓN NOSOTROS
+=================================*/
+.collection-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    padding: 12px 20px !important;
+}
+
+
+/* ================================
+   CARDS
+=================================*/
+.card {
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.card-image img {
+    filter: brightness(0.9);
+}
+
+.eco-card-title {
+    background: rgba(0,0,0,0.45);
+    padding: 10px 14px;
+    border-radius: 10px;
+}
+
+/* ================================
+   FORMULARIO
+=================================*/
+.card-panel {
+    border-radius: 12px;
+    padding: 30px !important;
+}
+
+.input-field input:focus + label {
+    color: #43A047 !important;
+}
+
+.input-field input:focus {
+    border-bottom: 2px solid #43A047 !important;
+    box-shadow: 0 1px 0 0 #43A047 !important;
+}
+
+/* Botón flotante */
+.floating-btn {
+    background-color: #43A047 !important;
+    transition: 0.3s ease;
+}
+
+.floating-btn:hover {
+    background-color: #2E7032 !important;
+}
+
+/* ================================
+   FOOTER MEJORADO
+=================================*/
+
+/* Footer con tarjetas */
+footer, footer p, footer span {
+    color: white !important;
+}
+
+.card-footer {
+    padding: 40px 0;
+}
+
+.footer-card {
+    text-align: center;
+    color: white;
+    padding: 15px;
+}
+
+.footer-card i {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.footer-card h6 {
+    font-family: Montserrat;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+
+
+/* ================================
+   RESPONSIVE IMPROVEMENTS
+=================================*/
+
+@media (max-width: 600px) {
+    .hero-section {
+        padding: 80px 20px;
+        min-height: 60vh;
+    }
+
+    .hero-content h2 {
+        font-size: 28px !important;
+    }
+
+    .collection .collection-item {
+        font-size: 16px;
+    }
+}
